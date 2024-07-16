@@ -45,6 +45,8 @@ void RefreshScreen () {
 		oy = tw.ws_row;
 	//	chg_flag = true;
 	}
+	char buf[25];
+	sprintf (buf, "%d x %d", tw.ws_row, tw.ws_col);
 	if ( chg_flag ) {
 		clear ();	
 		cx = tw.ws_col / 2;		cy = tw.ws_row / 2;
@@ -55,6 +57,7 @@ void RefreshScreen () {
 		mvprintw (cy - 1, tw.ws_col - strlen (msgR), msgR);
 		mvprintw (cy + 1, tw.ws_col - strlen (msgRc), msgRc);
 		mvprintw (cy, cx - strlen (msgEXIT) / 2, msgEXIT);
+		mvprintw (cy - 2, cx - (strlen(buf)/2), buf);
 		refresh ();
 	}
 }
